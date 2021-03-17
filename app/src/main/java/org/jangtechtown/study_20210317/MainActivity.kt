@@ -1,6 +1,7 @@
 package org.jangtechtown.study_20210317
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
@@ -38,6 +39,19 @@ class MainActivity : AppCompatActivity() {
 
             val myIntent = Intent(this, EditNicknameActivity::class.java)
             startActivityForResult(myIntent, REQ_FOR_NICKNAME)
+
+        }
+
+        dialBtn.setOnClickListener {
+
+            val inputPhoneNum = phoneNumEdt.text.toString()
+
+            val myUri = Uri.parse("tel:${inputPhoneNum}")
+
+            val myIntent = Intent(Intent.ACTION_DIAL, myUri)
+
+            startActivity(myIntent)
+
 
         }
 
